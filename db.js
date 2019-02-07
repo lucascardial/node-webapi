@@ -12,5 +12,9 @@ function findCustomer(id, callback) {
     global.conn.collection('customers').findOne(new objectID(id), callback)
 }
 
+function createCustomer(customer, callback) {
+    global.conn.collection('customers').insert(customer, callback)
+}
+
 module.exports = {}
-module.exports = {allCustomers, findCustomer}
+module.exports = {allCustomers, findCustomer, createCustomer}

@@ -34,6 +34,19 @@ router.get('/clientes/:id', (req, res) =>
         else res.json(doc)
     })
 })
+
+router.post('/clientes', (req, res) => 
+{
+    const customer = req.body
+    global.db.createCustomer(customer, (err, result) =>
+    {
+        if(err) res.status(500).json(err)
+        else res.status(201).json({
+            message: 'Created'
+        })
+    })
+})
+
 app.use('/', router);
 app.listen(port);
 console.log(`Server api its working on port ${port}`);
